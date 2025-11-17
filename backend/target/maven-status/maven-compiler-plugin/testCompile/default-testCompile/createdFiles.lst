@@ -1,0 +1,7 @@
+com\garageid\access\AccessControllerTest.class
+com\garageid\admin\AdminControllerTest.class
+com\garageid\payment\PaymentServiceTest.class
+com\garageid\reservation\ReservationServiceTest.class
+com\garageid\vehicle\VehicleControllerTest.class
+com\garageid\vehicle\VehicleControllerTest$MinimalAuth.class
+com\garageid\parking\ParkingControllerTest.class

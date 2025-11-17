@@ -1,0 +1,23 @@
+spring:
+  application:
+    name: garage-id-backend
+  data:
+    mongodb:
+      uri: ${MONGODB_URI:mongodb://localhost:27017/garageid}
+  mail:
+    host: ${MAIL_HOST:localhost}
+    port: ${MAIL_PORT:25}
+    username: ${MAIL_USER:}
+    password: ${MAIL_PASS:}
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+server:
+  port: ${PORT:8080}
+security:
+  jwt:
+    secret: ${JWT_SECRET:ZmFrZV9zZWNyZXRfZm9yX2p3dF9iYXNlNjQ=}
+    expirationMillis: 3600000
