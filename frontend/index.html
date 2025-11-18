@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Garage-ID</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="nav">
+    <a class="brand" href="index.html" aria-label="Inicio">Garage-ID</a>
+    <nav>
+      <a href="register.html">Crear cuenta</a>
+      <a href="login.html">Iniciar sesión</a>
+    </nav>
+    <div class="nav-right">
+      <button id="theme-toggle" class="btn btn-outline" aria-label="Cambiar tema">Modo claro</button>
+    </div>
+  </header>
+  <main class="container">
+    <section class="hero reveal">
+      <h1>Garage-ID</h1>
+      <p>Plataforma integral para la gestión premium de parqueaderos: experiencia elegante para usuarios, operadores y administradores, con seguridad y eficiencia.</p>
+    </section>
+    <section class="reveal">
+      <div class="section-title"><h2>¿Qué somos?</h2><span class="badge">Premium</span></div>
+      <p>Somos un ecosistema digital de estacionamiento de alta gama que combina tecnología y diseño para ofrecer control total de vehículos, reservas, pagos y operación diaria. Creamos una experiencia fluida, confiable y sofisticada para cada rol.</p>
+    </section>
+    <section class="reveal">
+      <div class="grid-two">
+        <div>
+          <div class="section-title"><h2>Visión</h2><span class="badge">Futuro</span></div>
+          <p>Ser el estándar de excelencia en gestión de parqueaderos, elevando la experiencia a un nivel de lujo con datos precisos, procesos impecables y una interfaz que inspire confianza.</p>
+        </div>
+        <div>
+          <div class="section-title"><h2>Misión</h2><span class="badge">Excelencia</span></div>
+          <p>Empoderar a usuarios, operadores y administradores con herramientas claras y seguras, optimizando tiempos y decisiones, y garantizando una operación ágil y sin fricciones.</p>
+        </div>
+      </div>
+    </section>
+    <section class="reveal">
+      <div class="section-title"><h2>Características</h2><span class="badge">Calidad</span></div>
+      <div class="grid">
+        <div class="card reveal"><h3>Seguridad</h3><p>Autenticación con token, permisos por rol y datos protegidos.</p></div>
+        <div class="card reveal"><h3>Eficiencia</h3><p>Flujos simples para registrar, listar y gestionar sin fricción.</p></div>
+        <div class="card reveal"><h3>Diseño</h3><p>Interfaz premium, consistente y responsiva en todos los paneles.</p></div>
+      </div>
+    </section>
+    <section class="reveal">
+      <div class="section-title"><h2>Testimonios</h2><span class="badge">Personas</span></div>
+      <div class="testimonials-grid">
+        <div class="testimonial-card reveal">
+          <div class="testimonial-head"><span class="avatar-circle">U</span><div><strong>María</strong><div class="stars">★★★★★</div></div></div>
+          <p>Registro mis vehículos y hago reservas en minutos. La experiencia es clara y elegante.</p>
+        </div>
+        <div class="testimonial-card reveal">
+          <div class="testimonial-head"><span class="avatar-circle">O</span><div><strong>Carlos</strong><div class="stars">★★★★☆</div></div></div>
+          <p>Como operador, registrar entradas y salidas es rápido y el resumen diario ayuda mucho.</p>
+        </div>
+        <div class="testimonial-card reveal">
+          <div class="testimonial-head"><span class="avatar-circle">A</span><div><strong>Lucía</strong><div class="stars">★★★★★</div></div></div>
+          <p>Administro parqueaderos y obtengo métricas útiles con una interfaz de calidad.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+  <script src="utils.js"></script>
+  <script>
+    try {
+      if (typeof isLoggedIn==='function' && isLoggedIn()){
+        const u = getCurrentUser();
+        const role = (u&&u.role)||'';
+        const map = { ADMIN: 'admin.html', OPERATOR: 'operator.html', USER: 'user.html' };
+        const href = map[role] || 'user.html';
+        const nav = document.querySelector('.hero .actions');
+        if (nav){
+          const go = document.createElement('a'); go.className='btn btn-gold'; go.href=href; go.textContent='Ir a mi panel';
+          nav.appendChild(go);
+        }
+      }
+    } catch {}
+    try {
+      const els = document.querySelectorAll('.reveal');
+      const io = new IntersectionObserver((entries)=>{
+        entries.forEach(e=>{ if (e.isIntersecting){ e.target.classList.add('reveal-visible'); io.unobserve(e.target); } });
+      },{ root:null, rootMargin:'0px 0px -10% 0px', threshold:0.12 });
+      els.forEach(el=>io.observe(el));
+    } catch {}
+  </script>
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Garage-ID Usuario</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="nav">
+    <a class="brand" href="index.html" aria-label="Inicio">Garage-ID</a>
+    <nav>
+      <a href="register.html">Crear cuenta</a>
+      <a href="login.html">Iniciar sesión</a>
+    </nav>
+    <div class="nav-right">
+      <button id="theme-toggle" class="btn btn-outline" aria-label="Cambiar tema">Modo claro</button>
+    </div>
+  </header>
+  <div class="container">
+    <h1>Panel Usuario</h1>
+    <div class="session-strip" id="u-session-strip"></div>
+    <section>
+      <div class="section-title"><h2>Resumen</h2><span class="badge">Usuario</span></div>
+      <div class="stats-grid">
+        <div class="stat-card"><div class="stat-value" id="u-stat-vehicles">0</div><div class="stat-label">Mis vehículos</div></div>
+        <div class="stat-card"><div class="stat-value" id="u-stat-reservations">0</div><div class="stat-label">Mis reservas</div></div>
+        <div class="stat-card"><div class="stat-value" id="u-stat-lastpay">—</div><div class="stat-label">Último pago</div></div>
+      </div>
+      <div class="actions"><button class="btn" id="u-stats-refresh">Actualizar</button></div>
+    </section>
+    <div class="grid-two">
+      <section>
+        <div class="section-title"><h2>Registrar vehículo</h2><span class="badge">Mis datos</span></div>
+        <div class="fields-inline">
+          <div class="field"><label for="v-plate">Placa</label><input id="v-plate" placeholder="Placa" required></div>
+          <div class="field"><label for="v-brand">Marca</label><input id="v-brand" placeholder="Marca" required></div>
+          <div class="field"><label for="v-model">Modelo</label><input id="v-model" placeholder="Modelo" required></div>
+          <div class="field"><label for="v-type">Tipo</label>
+            <select id="v-type">
+              <option value="CARRO">Carro</option>
+              <option value="MOTO">Moto</option>
+            </select>
+          </div>
+          <div class="field"><label for="v-color">Color</label><input id="v-color" placeholder="Color" required></div>
+        </div>
+        <div class="actions"><button class="btn btn-gold" id="v-save">Guardar</button></div>
+      </section>
+      <section>
+        <div class="section-title"><h2>Mis vehículos</h2><span class="badge">Lista</span></div>
+        <div class="actions"><button class="btn" id="v-list">Listar</button></div>
+        <ul id="v-list-ul" class="list"></ul>
+      </section>
+    </div>
+    <div class="grid-two">
+      <section>
+        <div class="section-title"><h2>Crear reserva</h2><span class="badge">Agenda</span></div>
+        <div class="fields-inline">
+          <div class="field"><label for="r-vehicleId">ID Vehículo</label><input id="r-vehicleId" placeholder="ID Vehículo"></div>
+          <div class="field"><label for="r-parkingLotId">ID Parqueadero</label><input id="r-parkingLotId" placeholder="ID Parqueadero"></div>
+          <div class="field"><label for="r-date">Fecha</label><input id="r-date" type="text" placeholder="DD/MM/YYYY" required></div>
+          <div class="field"><label for="r-time-from">Hora inicio</label><input id="r-time-from" type="time" placeholder="Hora inicio" required></div>
+          <div class="field"><label for="r-time-to">Hora fin</label><input id="r-time-to" type="time" placeholder="Hora fin" required></div>
+        </div>
+        <div class="actions"><button class="btn btn-gold" id="r-create">Crear</button></div>
+      </section>
+      <section>
+        <div class="section-title"><h2>Mis reservas</h2><span class="badge">Lista</span></div>
+        <div class="actions"><button class="btn" id="r-list">Listar</button></div>
+        <ul id="r-list-ul" class="list"></ul>
+      </section>
+    </div>
+    <div class="grid-two">
+      <section>
+        <div class="section-title"><h2>Pagos</h2><span class="badge">EFECTIVO / PSE / Nequi</span></div>
+        <div class="fields-inline">
+          <div class="field"><label for="p-reservationId">ID Reserva</label><input id="p-reservationId" placeholder="ID Reserva"></div>
+          <div class="field"><label for="p-amount">Monto</label><input id="p-amount" type="number" min="0" step="0.01" placeholder="Monto"></div>
+          <div class="field"><label for="p-method">Método</label>
+            <select id="p-method">
+              <option value="EFECTIVO">Efectivo</option>
+              <option value="PSE">PSE</option>
+              <option value="NEQUI">Nequi</option>
+            </select>
+          </div>
+        </div>
+        <div class="actions"><button class="btn btn-gold" id="p-pay">Pagar</button></div>
+      </section>
+      <section>
+        <div class="section-title"><h2>Historial de pagos</h2><span class="badge">Lista</span></div>
+        <div class="actions"><button class="btn" id="p-history">Listar</button></div>
+        <ul id="p-list-ul" class="list"></ul>
+      </section>
+    </div>
+  </div>
+  <script src="utils.js"></script>
+  <script src="user.js"></script>
+  <script>
+    window.addEventListener('error', e => alert('Error: ' + e.message));
+  </script>
+</body>
+</html>

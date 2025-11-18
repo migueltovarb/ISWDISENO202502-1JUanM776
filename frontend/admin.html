@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Garage-ID Admin</title><link rel="stylesheet" href="styles.css"></head>
+<body>
+  <header class="nav">
+    <a class="brand" href="index.html" aria-label="Inicio">Garage-ID</a>
+    <nav>
+      <a href="register.html">Crear cuenta</a>
+      <a href="login.html">Iniciar sesión</a>
+    </nav>
+    <div class="nav-right">
+      <button id="theme-toggle" class="btn btn-outline" aria-label="Cambiar tema">Modo claro</button>
+    </div>
+  </header>
+  <div class="container">
+    <h1>Panel Administrador</h1>
+    <section>
+      <div class="section-title"><h2>Resumen</h2><span class="badge">Admin</span></div>
+      <div class="stats-grid">
+        <div class="stat-card"><div class="stat-value" id="a-stat-users">0</div><div class="stat-label">Usuarios</div></div>
+        <div class="stat-card"><div class="stat-value" id="a-stat-vehicles">0</div><div class="stat-label">Vehículos</div></div>
+        <div class="stat-card"><div class="stat-value" id="a-stat-reservations">0</div><div class="stat-label">Reservas</div></div>
+        <div class="stat-card"><div class="stat-value" id="a-stat-payments">0</div><div class="stat-label">Pagos</div></div>
+      </div>
+      <div class="actions"><button class="btn" id="a-stats-refresh">Actualizar</button></div>
+    </section>
+    <div class="grid-two">
+      <section>
+        <div class="section-title"><h2>Gestionar parqueaderos</h2><span class="badge">Admin</span></div>
+        <p class="form-desc">Crea, lista y elimina parqueaderos con una interfaz clara y elegante.</p>
+        <div class="fields-inline">
+          <div class="field"><label for="p-name">Nombre</label><input id="p-name" placeholder="Nombre"></div>
+          <div class="field"><label for="p-capacity">Capacidad</label><input id="p-capacity" placeholder="Capacidad" type="number"></div>
+          <div class="field"><label for="p-location">Ubicación</label><input id="p-location" placeholder="Ubicación"></div>
+        </div>
+        <div class="actions">
+          <button class="btn btn-gold" id="p-create">Crear</button>
+          <button class="btn" id="p-list">Listar</button>
+        </div>
+        <p id="p-count" class="form-desc"></p>
+        <ul id="p-list-ul" class="list"></ul>
+      </section>
+      <section>
+        <div class="section-title"><h2>Reporte</h2><span class="badge">Resumen</span></div>
+        <p class="form-desc">Genera un reporte simple con métricas clave del sistema.</p>
+        <div class="actions"><button class="btn" id="r-admin">Generar reporte</button></div>
+        <div class="card chart-card">
+          <h3 class="chart-title">Distribución</h3>
+          <div class="chart-grid">
+            <canvas id="r-admin-chart" class="chart-canvas" width="360" height="240"></canvas>
+          </div>
+          <div id="r-admin-legend" class="chart-legend"></div>
+          <pre id="r-admin-pre" class="report-pre"></pre>
+        </div>
+      </section>
+    </div>
+  </div>
+  <script src="utils.js"></script>
+  <script src="admin.js"></script>
+</body></html>

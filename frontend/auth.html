@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Garage-ID Autenticación</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="nav">
+    <a class="brand" href="index.html" aria-label="Inicio">Garage-ID</a>
+    <nav>
+      <a href="register.html">Crear cuenta</a>
+      <a href="login.html">Iniciar sesión</a>
+    </nav>
+    <div class="nav-right">
+      <button id="theme-toggle" class="btn btn-outline" aria-label="Cambiar tema">Modo claro</button>
+    </div>
+  </header>
+  <main class="container">
+    <section>
+      <div class="section-title"><h1>Crear cuenta</h1></div>
+      <input id="name" placeholder="Nombre">
+      <input id="email" placeholder="Email">
+      <input id="pass" type="password" placeholder="Password">
+      <select id="role">
+        <option value="USER">USER</option>
+        <option value="OPERATOR">OPERATOR</option>
+        <option value="ADMIN">ADMIN</option>
+      </select>
+      <button class="btn" id="register">Registrarse</button>
+      <p id="reg-status"></p>
+    </section>
+    <section>
+      <div class="section-title"><h1>Iniciar sesión</h1></div>
+      <input id="lemail" placeholder="Email">
+      <input id="lpass" type="password" placeholder="Password">
+      <button class="btn" id="login">Entrar</button>
+      <p id="log-status"></p>
+    </section>
+  </main>
+  <script src="utils.js"></script>
+  <script src="auth.js"></script>
+</body>
+<!-- No comments -->
+</html>

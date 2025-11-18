@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Garage-ID Registro</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="nav">
+    <a class="brand" href="index.html" aria-label="Inicio">Garage-ID</a>
+    <nav>
+      <a href="register.html">Crear cuenta</a>
+      <a href="login.html">Iniciar sesión</a>
+    </nav>
+    <div class="nav-right">
+      <button id="theme-toggle" class="btn btn-outline" aria-label="Cambiar tema">Modo claro</button>
+    </div>
+  </header>
+  <main class="container">
+    <section>
+      <div class="section-title"><h1>Crear cuenta</h1><span class="badge">Registro</span></div>
+      <div class="auth-wrap">
+        <div class="card form-card">
+          <p class="form-desc">Crea tu cuenta para acceder a tu panel según tu rol. Disfruta de una experiencia premium, segura y optimizada.</p>
+          <div class="field"><label for="name">Nombre</label><input id="name" placeholder="Tu nombre"></div>
+          <div class="field"><label for="email">Email</label><input id="email" placeholder="tu@email.com"></div>
+          <div class="field"><label for="pass">Password</label><input id="pass" type="password" placeholder="••••••••"></div>
+          <div class="field"><label for="role">Rol</label>
+            <select id="role">
+              <option value="USER">Usuario</option>
+              <option value="OPERATOR">Operador</option>
+              <option value="ADMIN">Administrador</option>
+            </select>
+          </div>
+          <div class="actions">
+            <button class="btn btn-gold" id="register">Crear cuenta</button>
+          </div>
+          <p class="hint-line">¿Ya tienes cuenta? <a href="login.html">Inicia sesión</a></p>
+          <p id="reg-status"></p>
+        </div>
+      </div>
+    </section>
+  </main>
+  <script src="utils.js"></script>
+  <script src="auth.js"></script>
+</body>
+</html>

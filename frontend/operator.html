@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Garage-ID Operador</title><link rel="stylesheet" href="styles.css"></head>
+<body>
+  <header class="nav">
+    <a class="brand" href="index.html" aria-label="Inicio">Garage-ID</a>
+    <nav>
+      <a href="register.html">Crear cuenta</a>
+      <a href="login.html">Iniciar sesión</a>
+    </nav>
+    <div class="nav-right">
+      <button id="theme-toggle" class="btn btn-outline" aria-label="Cambiar tema">Modo claro</button>
+    </div>
+  </header>
+  <div class="container">
+    <h1>Panel Operador</h1>
+    <div class="session-strip" id="o-session-strip"></div>
+    <section>
+      <div class="section-title"><h2>Resumen</h2><span class="badge">Hoy</span></div>
+      <div class="stats-grid">
+        <div class="stat-card"><div class="stat-value" id="o-stat-entry">0</div><div class="stat-label">Entradas</div></div>
+        <div class="stat-card"><div class="stat-value" id="o-stat-exit">0</div><div class="stat-label">Salidas</div></div>
+        <div class="stat-card"><div class="stat-value" id="o-stat-last">—</div><div class="stat-label">Último movimiento</div></div>
+      </div>
+      <div class="actions"><button class="btn" id="o-stats-refresh">Actualizar</button></div>
+    </section>
+    <div class="grid-two">
+      <section>
+        <div class="section-title"><h2>Registrar movimiento</h2><span class="badge">Operaciones</span></div>
+        <p class="form-desc">Registra entradas y salidas por placa con una interfaz clara.</p>
+        <div class="fields-inline">
+          <div class="field"><label for="o-plate">Placa</label><input id="o-plate" placeholder="AAA123"></div>
+        </div>
+        <div class="actions">
+          <button class="btn btn-gold" id="o-entry">Entrada</button>
+          <button class="btn" id="o-exit">Salida</button>
+        </div>
+      </section>
+      <section>
+        <div class="section-title"><h2>Historial rápido</h2><span class="badge">Hoy</span></div>
+        <div class="actions"><button class="btn" id="o-history-refresh">Actualizar</button><button class="btn btn-outline" id="o-history-clear">Limpiar</button></div>
+        <ul id="o-history-ul" class="list"></ul>
+      </section>
+    </div>
+  </div>
+  <script src="utils.js"></script>
+  <script src="operator.js"></script>
+</body></html>
