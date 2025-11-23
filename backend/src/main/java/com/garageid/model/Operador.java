@@ -9,6 +9,10 @@ public class Operador extends UsuarioBase {
     super(nombre, email, passwordHash, Role.OPERATOR);
   }
 
+  public Operador(String id, String nombre, String email, String passwordHash) {
+    super(id, nombre, email, passwordHash, Role.OPERATOR);
+  }
+
   @Override
   public List<String> getPermisos() {
     return List.of("entradas.registrar", "salidas.registrar");

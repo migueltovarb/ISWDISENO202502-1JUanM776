@@ -9,6 +9,10 @@ public class Usuario extends UsuarioBase {
     super(nombre, email, passwordHash, Role.USER);
   }
 
+  public Usuario(String id, String nombre, String email, String passwordHash) {
+    super(id, nombre, email, passwordHash, Role.USER);
+  }
+
   @Override
   public List<String> getPermisos() {
     return List.of("vehiculos.crear", "reservas.crear", "reservas.ver");

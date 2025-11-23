@@ -13,8 +13,14 @@ public class VehicleService {
   public VehicleService(VehicleRepository vehicles) { this.vehicles = vehicles; }
 
   public VehicleDTO add(String userId, String plate, String brand, String model, String type, String color) {
-    Vehicle v = vehicles.save(new Vehicle(userId, plate, brand, model, type, color));
-    return new VehicleDTO(v.getId(), v.getPlate(), v.getBrand(), v.getModel(), v.getType(), v.getColor());
+    try {
+      Vehicle v = vehicles.save(new Vehicle(userId, plate, brand, model, type, color));
+      return new VehicleDTO(v.getId(), v.getPlate(), v.getBrand(), v.getModel(), v.getType(), v.getColor());
+    } catch (RuntimeException e) {
+      String msg = e.getMessage()==null?"":e.getMessage();
+      if (msg.contains("E11000") || msg.toLowerCase().contains("duplicate key")) throw new IllegalArgumentException("La placa ya está registrada");
+      throw e;
+    }
   }
 
   public List<VehicleDTO> listMy(String userId) {
@@ -30,7 +36,13 @@ public class VehicleService {
     if (model != null) v.setModel(model);
     if (type != null) v.setType(type);
     if (color != null) v.setColor(color);
-    vehicles.save(v);
+    try {
+      vehicles.save(v);
+    } catch (RuntimeException e) {
+      String msg = e.getMessage()==null?"":e.getMessage();
+      if (msg.contains("E11000") || msg.toLowerCase().contains("duplicate key")) throw new IllegalArgumentException("La placa ya está registrada");
+      throw e;
+    }
     return new VehicleDTO(v.getId(), v.getPlate(), v.getBrand(), v.getModel(), v.getType(), v.getColor());
   }
 

@@ -1,0 +1,35 @@
+# Global
+.DS_Store
+Thumbs.db
+*.log
+.env
+
+# IDE
+.idea/
+.vscode/
+*.iml
+**/.classpath
+**/.project
+**/.settings/
+
+# Maven/Java (backend)
+backend/target/
+backend/**/*.class
+backend/**/*.jar
+backend/.mvn/
+backend/mvnw
+backend/mvnw.cmd
+
+# Local Maven distribution placed in project
+apache-maven-*/
+
+# Node/Frontend (in case of tooling)
+frontend/node_modules/
+frontend/dist/
+frontend/.cache/
+
+# Python http.server has no build artifacts, nothing extra here
+
+# OS and misc
+*.tmp
+~*

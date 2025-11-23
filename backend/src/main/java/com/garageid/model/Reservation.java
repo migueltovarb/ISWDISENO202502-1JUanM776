@@ -20,6 +20,15 @@ public class Reservation {
     this.to = to;
   }
 
+  public Reservation(String id, String userId, String vehicleId, String parkingLotId, LocalDateTime from, LocalDateTime to) {
+    this.id = id;
+    this.userId = userId;
+    this.vehicleId = vehicleId;
+    this.parkingLotId = parkingLotId;
+    this.from = from;
+    this.to = to;
+  }
+
   public String getId() { return id; }
   public String getUserId() { return userId; }
   public void setUserId(String userId) { this.userId = userId; }

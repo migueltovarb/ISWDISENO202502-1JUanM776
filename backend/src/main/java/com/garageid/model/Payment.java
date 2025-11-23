@@ -22,6 +22,16 @@ public class Payment {
     this.method = method;
   }
 
+  public Payment(String id, String userId, String reservationId, double amount, String status, String method, LocalDateTime createdAt) {
+    this.id = id;
+    this.userId = userId;
+    this.reservationId = reservationId;
+    this.amount = amount;
+    this.status = status;
+    this.createdAt = createdAt;
+    this.method = method;
+  }
+
   public String getId() { return id; }
   public String getUserId() { return userId; }
   public String getReservationId() { return reservationId; }

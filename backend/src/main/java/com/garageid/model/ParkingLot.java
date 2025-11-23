@@ -15,6 +15,13 @@ public class ParkingLot {
     this.location = location;
   }
 
+  public ParkingLot(String id, String name, int capacity, String location) {
+    this.id = id;
+    this.name = name;
+    this.capacity = capacity;
+    this.location = location;
+  }
+
   public String getId() { return id; }
   public String getName() { return name; }
   public void setName(String name) { this.name = name; }

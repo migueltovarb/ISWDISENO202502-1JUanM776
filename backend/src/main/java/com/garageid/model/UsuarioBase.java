@@ -20,6 +20,14 @@ public abstract class UsuarioBase {
     this.role = role;
   }
 
+  public UsuarioBase(String id, String nombre, String email, String passwordHash, Role role) {
+    this.id = id;
+    this.nombre = nombre;
+    this.email = email;
+    this.passwordHash = passwordHash;
+    this.role = role;
+  }
+
   public String getId() { return id; }
   public String getNombre() { return nombre; }
   public void setNombre(String nombre) { this.nombre = nombre; }

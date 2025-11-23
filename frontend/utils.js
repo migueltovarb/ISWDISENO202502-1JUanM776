@@ -1,4 +1,6 @@
-const API = 'http://localhost:8080';
+let API = localStorage.getItem('api_base') || 'http://localhost:8080';
+const API_CANDIDATES = ['http://localhost:8080','http://localhost:8081'];
+function setApiBase(b){ API = b; localStorage.setItem('api_base', b); }
 function setToken(t){ localStorage.setItem('garage_token', t); }
 function getToken(){ return localStorage.getItem('garage_token'); }
 let safeMode = true;
@@ -109,17 +111,36 @@ async function mockFetch(path, opts={}){
 }
 async function apiFetch(path, opts={}){
   if (safeMode) return mockFetch(path, opts);
-  const headers = opts.headers || {};
-  const token = getToken();
-  if (token) headers['Authorization'] = 'Bearer ' + token;
-  headers['Content-Type'] = headers['Content-Type'] || 'application/json';
-  const res = await fetch(API + path, { ...opts, headers });
-  if (!res.ok) {
-    let msg = 'Error';
-    try { const j = await res.json(); msg = j.message || JSON.stringify(j); } catch { }
-    throw new Error(msg + ' (' + res.status + ')');
+  try {
+    const headers = opts.headers || {};
+    const token = getToken();
+    if (token) headers['Authorization'] = 'Bearer ' + token;
+    headers['Content-Type'] = headers['Content-Type'] || 'application/json';
+    const res = await fetch(API + path, { ...opts, headers });
+    if (!res.ok) {
+      let msg = 'Error';
+      try { const j = await res.json(); msg = j.message || JSON.stringify(j); } catch { }
+      throw new Error(msg + ' (' + res.status + ')');
+    }
+    return res.json();
+  } catch (e) {
+    setSafeMode(true); setApiMode('safe');
+    return mockFetch(path, opts);
   }
-  return res.json();
+}
+
+function getApiMode(){ return localStorage.getItem('api_mode')||''; }
+function setApiMode(m){ localStorage.setItem('api_mode', m); }
+async function detectBackend(){
+  for (const base of API_CANDIDATES){
+    try {
+      await fetch(base + '/auth/login', { method:'POST', headers:{ 'Content-Type':'application/json' }, body:'{}' });
+      setApiBase(base);
+      setSafeMode(false); setApiMode('real');
+      return;
+    } catch {}
+  }
+  setSafeMode(true); setApiMode('safe');
 }
 
 // Tema (claro/oscuro)
@@ -187,6 +208,8 @@ function initSessionUI(){
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+  const m = getApiMode();
+  if (m){ setSafeMode(m!=='real'); } else { detectBackend().then(()=>{}); }
   initTheme();
   const tbtn = document.getElementById('theme-toggle');
   if (tbtn){ tbtn.onclick = toggleTheme; }

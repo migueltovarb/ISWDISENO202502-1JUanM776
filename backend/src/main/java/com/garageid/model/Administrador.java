@@ -9,6 +9,10 @@ public class Administrador extends UsuarioBase {
     super(nombre, email, passwordHash, Role.ADMIN);
   }
 
+  public Administrador(String id, String nombre, String email, String passwordHash) {
+    super(id, nombre, email, passwordHash, Role.ADMIN);
+  }
+
   @Override
   public List<String> getPermisos() {
     return List.of("parqueaderos.gestionar", "reportes.generar", "actividad.ver");

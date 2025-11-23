@@ -21,6 +21,16 @@ public class Vehicle {
     this.color = color;
   }
 
+  public Vehicle(String id, String userId, String plate, String brand, String model, String type, String color) {
+    this.id = id;
+    this.userId = userId;
+    this.plate = plate;
+    this.brand = brand;
+    this.model = model;
+    this.type = type;
+    this.color = color;
+  }
+
   public String getId() { return id; }
   public String getUserId() { return userId; }
   public void setUserId(String userId) { this.userId = userId; }
